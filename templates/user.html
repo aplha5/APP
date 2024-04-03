@@ -1,12 +1,10 @@
-{% extends "base.html" %} 
-{% block title %}User page{% endblock %}
-{% block content %}
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for msg in messages %}
-        <p>{{msg}}</p>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-<p>Welcome, {{user}} </p>
-{% endblock %}
+
+<div class="welcome-container">
+    <h1>Welcome <span>user</span>!</h1>
+</div>
+<div class="input-container">
+    <input type="text" placeholder="Enter your username" class="username-input">
+    <textarea placeholder="Type your message here..." class="message-input"></textarea>
+    <button class="send-button">Send</button>
+</div>
+<link rel="stylesheet" type="text/css" href="keerthi.css">
