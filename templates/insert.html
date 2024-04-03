@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Data</title>
+</head>
+<body>
+    <form method="POST">
+        <select name="table_name" id="table_name" onchange="showAttributes(this.value)">
+            <option value="">Select a table</option>
+            <option value="Block">Block</option>
+            <option value="Teaching_staff">Teaching_staff</option>
+            <option value="NTeaching_staff">NTeaching_staff</option>
+            <option value="Job_desc">Job_desc</option>
+            <option value="Students">Students</option>
+            <option value="Facility">Facility</option>
+            <option value="Phone">Phone</option>
+            <option value="Contact">Contact</option>
+            <option value="Contact_enquiry">Contact_enquiry</option>
+            <option value="Contact_info">Contact_info</option>
+            <option value="Contact_number">Contact_number</option>
+            <option value="To_Contact">To_Contact</option>
+            <option value="Work_info">Work_info</option>
+            <option value="Specialization">Specialization</option>
+        </select>
+        <div id="attributes"></div>
+        <input type="submit" value="Insert">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <script>
+        function showAttributes(table_name) {
+            var attributesDiv = document.getElementById('attributes');
+            attributesDiv.innerHTML = '';
+            var attributes;
+            if (table_name == 'Block') {
+                attributes = ['Block_name'];
+            } 
+            else if (table_name == 'Teaching_staff') {
+                attributes = ['Faculty_ID', 'FirstName','MiddleName','LastName','Email'];
+            }
+            else if (table_name == 'NTeaching_staff') {
+                attributes = ['Staff_ID', 'F_name','M_name','L_name','EmailID'];
+            }
+            else if (table_name == 'Job_desc') {
+                attributes = ['Discipline_name', 'Designation','Room_number','Building'];
+            }
+            else if (table_name == 'Students') {
+                attributes = ['Roll_number', 'First_name','Middle_name','Last_name','Email_id','Discipline','Program'];
+            }
+            else if (table_name == 'Facility') {
+                attributes = ['Facility_name', 'RoomNumber','BuildingName','Email_addr'];
+            }
+            else if (table_name == 'Phone') {
+                attributes = ['Work', 'Home','Emergency'];
+            }
+            else if (table_name == 'Contact') {
+                attributes = ['Faculty_ID', 'Work'];
+            }
+            else if (table_name == 'Contact_enquiry') {
+                attributes = ['Staff_ID', 'Work'];
+            }
+            else if (table_name == 'Contact_info') {
+                attributes = ['Facility_name', 'Work'];
+            }
+            else if (table_name =='Contact_number') {
+                attributes = ['Work','Roll_number']
+            }
+            else if (table_name =='To_Contact') {
+                attributes = ['Block_name','Work']
+            }
+            else if (table_name =='Work_info') {
+                attributes = ['Staff_ID','Designation','Room_number','Building','Discipline_name']
+            }
+            //else if (table_name =='Specialization')
+            else {
+                attributes = ['Faculty_ID','Discipline_name','Designation','Room_number','Building']
+            }
+            
+            for (var i = 0; i < attributes.length; i++) {
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.name = 'values';
+                input.placeholder = 'Enter ' + attributes[i];
+                attributesDiv.appendChild(input);
+            }
+        }
+    </script>
+</body>
+</html>

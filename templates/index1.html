@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+        width: 80%;
+        margin-left: 15%;
+        margin-right: 5%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        }
+
+
+        th {
+            background-color: #f8f8f8;
+            text-align: left;
+            padding: 10px;
+        }
+
+        td {
+            border-top: 1px solid #f8f8f8;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <input type="text" name="search_term" placeholder="Enter Search Term">
+        <select name="search_by">
+            <option value="Name/Email">Name/Email</option>
+            <option value="Discipline/Section">Discipline/Section</option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
+    {% if data %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Email</th>
+            <th>Discipline/Section</th>
+            <th>Work</th>
+            <th>Home/Emergency</th>
+            <th>Office</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+            <td>{{ row.2}}</td>
+            <td>{{ row.3 }}</td>
+            <td>{{ row.4 }}</td>
+            <td>{{ row.5 }}</td>
+            <td>{{ row.6 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
